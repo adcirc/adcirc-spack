@@ -59,16 +59,17 @@ class Adcirc(CMakePackage):
 
     # ...Package location and sample archive name
     git = "https://github.com/adcirc/adcirc.git"
+    url = "https://github.com/adcirc/adcirc/releases/download/v55.02/adcirc_v55.02.tar.gz"
 
     # ...ADCIRC versions
-    version("55.01", commit="58ddcb5f63a390fa7b53ce791c9f756f5ea0bc4b", preferred=True)
-    version("55.00", commit="b804a461db68ec73b669d1d82469f5a7a32d66a5", deprecated=True)
-    version("54.02", commit="29bb38ca684647eef3bfa1152785b1e762137f37", deprecated=True)
-    version("54.01", commit="87e9cfc07fc04d5ff2b29ffe36cefadbae4024ac", deprecated=True)
-    version("54.00", commit="fcac69501a050f26d8129bdc65bf802709c406e8", deprecated=True)
+    version("55.02", sha256="10029efccf25796f5190d9ace89af5b371bf874b746de6116543ee136e9334ee", preferred=True)
+    version("55.01", sha256="fa42ff973e157634ed6bedae9465067928944901524cc255c561b24db2d41b27", deprecated=True)
+    version("55.00", sha256="0de3bbdeb69b8809d668d511f10e8f4784f253d278e1985c3bbd3907725142d7", deprecated=True)
+    version("54.02", sha256="cb1aca0cc7a0b1b0c4cc91ad71a2ac2cbefc0a16d5ff25d6d2833e75b0fc5262", deprecated=True)
+    version("54.01", sha256="ff31a458c529f7ad970cf4ae099cbf0da9e949ad35af01be1e23e19dbb0ca6ca", deprecated=True)
+    version("54.00", sha256="6c2ac516b7ebb0508e2f3fdc684170f78b6f0e949f6ebcf98dc9208e304f3d18", deprecated=True)
 
-    version("master", branch="master")
-    version("develop", branch="development")
+    version("main", branch="main")
 
     # ...Build variants
     variant(
