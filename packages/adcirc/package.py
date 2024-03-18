@@ -56,6 +56,7 @@ class Adcirc(CMakePackage):
     # ...Metadata
     homepage = "https://www.adcirc.org"
     maintainers = ["zcobell"]
+    license("LGPL-v3.0")
 
     # ...Package location and sample archive name
     git = "https://github.com/adcirc/adcirc.git"
