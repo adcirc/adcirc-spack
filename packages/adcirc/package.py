@@ -63,10 +63,11 @@ class Adcirc(CMakePackage):
     url = "https://github.com/adcirc/adcirc/releases/download/v55.02/adcirc_v55.02.tar.gz"
 
     # ...ADCIRC versions
-    version("55.02", sha256="10029efccf25796f5190d9ace89af5b371bf874b746de6116543ee136e9334ee", preferred=True)
+    version("56.0.0", sha256="2c53ebe89eb1bc1a6426781fdf9f8fdd8cb93261bfedb6afd59b94b926fc1c78", preferred=True)
+    version("55.02", sha256="10029efccf25796f5190d9ace89af5b371bf874b746de6116543ee136e9334ee")
     version("55.01", sha256="fa42ff973e157634ed6bedae9465067928944901524cc255c561b24db2d41b27", deprecated=True)
     version("55.00", sha256="0de3bbdeb69b8809d668d511f10e8f4784f253d278e1985c3bbd3907725142d7", deprecated=True)
-    version("54.02", sha256="cb1aca0cc7a0b1b0c4cc91ad71a2ac2cbefc0a16d5ff25d6d2833e75b0fc5262", deprecated=True)
+    version("54.02", sha256="cb1aca0cc7a0b1b0c4cc91ad71a2ac2cbefc0a16d5ff25d6d2833e75b0fc5262")
     version("54.01", sha256="ff31a458c529f7ad970cf4ae099cbf0da9e949ad35af01be1e23e19dbb0ca6ca", deprecated=True)
     version("54.00", sha256="6c2ac516b7ebb0508e2f3fdc684170f78b6f0e949f6ebcf98dc9208e304f3d18", deprecated=True)
 
@@ -108,6 +109,17 @@ class Adcirc(CMakePackage):
     depends_on("netcdf-fortran@4:", when="+netcdf", type=("build", "link", "run"))
     depends_on("mpi", when="+mpi", type=("build", "link", "run"))
     depends_on("jpeg", when="+grib", type=("build", "link"))
+
+    def url_for_version(self, version):
+        """
+        Note that there is a slight difference in naming once we move to the new
+        python packaging system, so this handles that
+        """
+        if version >= Version("56.0.0"):
+            url_fmt = "https://github.com/adcirc/adcirc/releases/download/v{0}/adcirc-v{0}.tar.gz"
+        else:
+            url_fmt = "https://github.com/adcirc/adcirc/releases/download/v{0}/adcirc_v{0}.tar.gz"
+        return url_fmt.format(version)
 
     def cmake_args(self):
         args = []
