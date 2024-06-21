@@ -63,7 +63,8 @@ class Adcirc(CMakePackage):
     url = "https://github.com/adcirc/adcirc/releases/download/v55.02/adcirc_v55.02.tar.gz"
 
     # ...ADCIRC versions
-    version("56.0.0", sha256="2c53ebe89eb1bc1a6426781fdf9f8fdd8cb93261bfedb6afd59b94b926fc1c78", preferred=True)
+    version("56.0.1", sha256="cba0663722cfbfcc2c49dd01facb525d8ad49fe5f41c2017ce81173e3618b862", preferred=True)
+    version("56.0.0", sha256="2c53ebe89eb1bc1a6426781fdf9f8fdd8cb93261bfedb6afd59b94b926fc1c78")
     version("55.02", sha256="10029efccf25796f5190d9ace89af5b371bf874b746de6116543ee136e9334ee")
     version("55.01", sha256="fa42ff973e157634ed6bedae9465067928944901524cc255c561b24db2d41b27", deprecated=True)
     version("55.00", sha256="0de3bbdeb69b8809d668d511f10e8f4784f253d278e1985c3bbd3907725142d7", deprecated=True)
