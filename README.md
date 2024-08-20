@@ -81,7 +81,7 @@ This will print out a listing of available versions and options for use within t
 it is recommended to use the preferred version. While development and master are both listed as "safe", the only version that should 
 
 ```bash
-$ spack install adcirc@55.01
+$ spack install adcirc@56.0.2
 ```
 
 The default build will build adcirc and all dependencies from source as specified by your spack configuration. This 
@@ -101,7 +101,7 @@ This will build ADCIRC using the Intel-LLVM (i.e. Intel OneAPI) compilers. Note 
 is compatible with the Intel-LLVM compiler suite. Note that you'll need to ensure these compilers are installed/enabled
 before executing the above command:
 
-### Installing Intel OneAPI Compilers
+### Installing Intel OneAPI Compilers 
 ```bash
 $ spack install intel-oneapi-compilers
 $ spack activate intel-oneapi-compilers
