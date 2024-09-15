@@ -78,7 +78,7 @@ $ spack info adcirc
 ```
 
 This will print out a listing of available versions and options for use within the spack package. Unless you have specific needs,
-it is recommended to use the preferred version. While development and master are both listed as "safe", the only version that should 
+it is recommended to use the preferred version. 
 
 ```bash
 $ spack install adcirc@56.0.2
@@ -89,13 +89,13 @@ will build (by default) ADCIRC in serial and parallel with netCDF enabled. Addit
 `padcswan`, and `aswip`) can be enabled by specificying additional flags to Spack as shown below:
 
 ```bash
-$ spack install adcirc@develop +swan +aswip
+$ spack install adcirc +swan +aswip
 ```
 
 If you'd like to change the compiler that is used to build adcirc, you can pass that using:
 
 ```bash
-$ spack install adcirc@develop %oneapi
+$ spack install adcirc %oneapi
 ```
 This will build ADCIRC using the Intel-LLVM (i.e. Intel OneAPI) compilers. Note that only ADCIRC version 56.00+ 
 is compatible with the Intel-LLVM compiler suite. Note that you'll need to ensure these compilers are installed/enabled
@@ -129,7 +129,7 @@ oneapi@2022.2.1
 Another variant would be to enable the system to build OpenMPI from source using Intel-LLVM with SLURM support:
 
 ```bash
-$ spack install adcirc@develop ^openmpi+legacylaunchers schedulers=slurm %oneapi
+$ spack install adcirc ^openmpi+legacylaunchers schedulers=slurm %oneapi
 ```
 
 If you'd like to build with your specific mpi library, you should provide the specification that matches the 
