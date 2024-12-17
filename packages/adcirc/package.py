@@ -47,7 +47,7 @@
 #                                                                             #
 # ----------------------------------------------------------------------------#
 
-from spack import *
+from spack.package import *
 
 
 class Adcirc(CMakePackage):
