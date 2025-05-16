@@ -66,9 +66,14 @@ class Adcirc(CMakePackage):
 
     # ...ADCIRC versions
     version(
+        "56.0.4",
+        sha256="8135b5bf7f9db154f10a6523574a6ebb809fb7416d4f81a853d06fcb136c7989",
+        preferred=True,
+    )
+    version(
         "56.0.3",
         sha256="fdef5165b37d1dbc6de3e8943110c2ad3230872be04bd53ee3b6bf54d3b97183",
-        preferred=True,
+        deprecated=True,
     )
     version(
         "56.0.2",
@@ -149,6 +154,7 @@ class Adcirc(CMakePackage):
 
     # ...Dependencies
     depends_on("c", type="build")  
+    depends_on("cxx", type="build")  
     depends_on("fortran", type="build")
     depends_on("cmake@3:", type="build")
     depends_on("perl", type="build", when="+swan")
