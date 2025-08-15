@@ -66,9 +66,13 @@ class Adcirc(CMakePackage):
 
     # ...ADCIRC versions
     version(
+        "56.1.0",
+        sha256="c9119f950b58d5a4d994a1b0c87632b183cd51823f9f5c6f857c787bb2260f97",
+        preferred=True,
+    )
+    version(
         "56.0.4",
         sha256="8135b5bf7f9db154f10a6523574a6ebb809fb7416d4f81a853d06fcb136c7989",
-        preferred=True,
     )
     version(
         "56.0.3",
