@@ -41,7 +41,7 @@
 #                                                                             #
 # ----------------------------------------------------------------------------#
 #                                                                             #
-#          THE ADCIRC SOURCE CODE IS COPYRIGHTED, 1994-2022 BY:               #
+#          THE ADCIRC SOURCE CODE IS COPYRIGHTED, 1994-2026 BY:               #
 #                                                                             #
 #                 R.A. LUETTICH, JR AND J.J. WESTERINK                        #
 #                                                                             #
@@ -51,7 +51,8 @@ from spack.package import *
 
 
 class Adcirc(CMakePackage):
-    """ADCIRC: The ADvanced CIRCulation model for simulation of time dependent, free surface circulation and transport in two and three dimensions"""
+    """ADCIRC: The ADvanced CIRCulation model for simulation of time dependent,
+    free surface circulation and transport in two and three dimensions"""
 
     # ...Metadata
     homepage = "https://www.adcirc.org"
@@ -66,9 +67,14 @@ class Adcirc(CMakePackage):
 
     # ...ADCIRC versions
     version(
+        "56.2.0",
+        sha256="216b4a658da7b228f41c56e79550e6de797b32906ef76d75c3e2bb60e5b79d7f",
+        preferred=True,
+    )
+    version(
         "56.1.0",
         sha256="c9119f950b58d5a4d994a1b0c87632b183cd51823f9f5c6f857c787bb2260f97",
-        preferred=True,
+        deprecated=True,
     )
     version(
         "56.0.4",
