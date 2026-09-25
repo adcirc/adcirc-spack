@@ -3,6 +3,8 @@
 ADCIRC's cmake system can be used with the Spack (https://spack.io) package management system. This documentation
 provides a brief guide for setting up and building ADCIRC via the Spack system
 
+This repository uses the Spack 1.x package repository layout (package API v2.0) and requires Spack 1.0 or newer.
+
 ## Installation and Initial Setup
 
 ### Installing Spack
@@ -39,11 +41,25 @@ currently maintained outside the official spack repository (though this may chan
 To add the ADCIRC spack repository to your instance, use the command:
 
 ```bash
-$ spack repo add /path/to/adcirc_repository/spack 
+$ spack repo add https://github.com/adcirc/adcirc-spack.git
 ```
-This assumes that the string `/path/to/adcirc_repository` is the root directory of the ADCIRC package.
+Spack clones the repository and keeps it up to date. To use a local clone instead, point Spack at the package
+directory inside it:
 
-Note that this command only needs to be run once per spack installation.
+```bash
+$ spack repo add /path/to/adcirc-spack/spack_repo/adcirc
+```
+
+Note that this command only needs to be run once per spack installation. Within a Spack environment, the repository
+can also be pinned to a specific commit in `spack.yaml`:
+
+```yaml
+spack:
+  repos:
+    adcirc:
+      git: https://github.com/adcirc/adcirc-spack.git
+      commit: <commit hash>
+```
 
 ### System Compiler Configuration
 
@@ -98,33 +114,18 @@ If you'd like to change the compiler that is used to build adcirc, you can pass 
 $ spack install adcirc %oneapi
 ```
 This will build ADCIRC using the Intel-LLVM (i.e. Intel OneAPI) compilers. Note that only ADCIRC version 56.00+ 
-is compatible with the Intel-LLVM compiler suite. Note that you'll need to ensure these compilers are installed/enabled
-before executing the above command:
+is compatible with the Intel-LLVM compiler suite. `%oneapi` refers to the `intel-oneapi-compilers` package, which is
+only available on x86_64 Linux.
 
 ### Installing Intel OneAPI Compilers 
+In Spack 1.x, compilers are regular packages. Install the compilers once, and Spack will then use them for any
+spec that requests `%oneapi`:
 ```bash
 $ spack install intel-oneapi-compilers
-$ spack activate intel-oneapi-compilers
-$ spack compiler find
-$ spack deactivate intel-oneapi-compilers
-```
-
-Following that, you should see output like below showing the new Intel compilers (intel, oneapi, and dpcpp) installed:
-```bash
 $ spack compilers
-==> Available compilers
--- dpcpp debian11-x86_64 ----------------------------------------
-dpcpp@2022.2.1
-
--- gcc debian11-x86_64 ------------------------------------------
-gcc@10.2.1
-
--- intel debian11-x86_64 ----------------------------------------
-intel@2021.7.1
-
--- oneapi debian11-x86_64 ---------------------------------------
-oneapi@2022.2.1
 ```
+Compilers already present on the system (including a site-wide oneAPI installation) are registered as externals
+with `spack compiler find`.
 
 Another variant would be to enable the system to build OpenMPI from source using Intel-LLVM with SLURM support:
 
