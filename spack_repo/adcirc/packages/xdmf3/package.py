@@ -39,6 +39,8 @@ class Xdmf3(CMakePackage):
     depends_on("hdf5@1.10:~mpi", when="~mpi")
     # motivated by discussion in https://gitlab.kitware.com/xdmf/xdmf/-/issues/28
     patch("fix_hdf5_hid_t.diff")
+    # CMake 4 no longer accepts a minimum version below 3.5
+    patch("cmake4_minimum_version.diff")
 
     def cmake_args(self):
         """Populate cmake arguments for XDMF."""
